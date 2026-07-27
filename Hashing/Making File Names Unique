@@ -1,0 +1,16 @@
+class Solution {
+    public String[] getFolderNames(String[] names) {
+        int n=names.length;
+        String[] res=new String[n];
+        Map<String,Integer> map=new HashMap<>();
+        for(int i=0;i<n;i++){
+            String str=names[i];
+            int cnt=map.getOrDefault(str,0);
+            while(map.containsKey(str)) str=names[i] +"("+ ++cnt +")";
+            map.put(names[i],cnt);
+            map.put(str,0);
+            res[i]=str;
+        }
+        return res;
+    }
+}
